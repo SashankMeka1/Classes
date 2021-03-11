@@ -2,13 +2,13 @@
 #include <iostream>
 using namespace std;
 class media{
-	protected:
+	protected://fields
 		char title[20], year[4], field_one[20], field_two[20], field_three[20];
 	public:
 		char* get_year(), *get_title();
 		static char response[150];
 		static int type;
-		void print();
-		~media();
+		void print();//print fields
+		~media();//destructor
 };
 

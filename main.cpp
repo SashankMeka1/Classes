@@ -6,7 +6,7 @@ using namespace std;
 class Master{
 	public:
 		vector<media*>* list = new vector<media*>;
-		void add(char * input){
+		void add(char * input){//get type and add
 			cout << "Music, Game, or Movie?"<<endl;
 			cin.getline(input,10);
 			if(strcmp(input, "Music")==0){
@@ -20,7 +20,7 @@ class Master{
 				media::type = 2;
 				game *gme = new game();
 				list->push_back(gme);
-				//gme->print();
+				gme->print();
 			}
 			else if(strcmp(input,"Movie")==0){
 				media::type = 1;
@@ -33,7 +33,7 @@ class Master{
 			}
 		}
 		void rm(vector<media*>*list, vector<media*>::iterator &i, bool del){
-			if(del){
+			if(del){//delete if delete is true otherwise just print when searching
 				delete(*i);
 				list->erase(i);
 				i--;
@@ -43,10 +43,9 @@ class Master{
 			}
 		}
 		void search_del(char * input, bool del){
-			cout << list->size();
 			cout << "Title or Year"<<endl;
 			cin.getline(input,10);
-			static bool title;
+			static bool title;//get search field
 			if(strcmp("Title", input) == 0){
 				cout << "Title?"<<endl;
 				cin.getline(input, 30);
@@ -60,7 +59,7 @@ class Master{
 			else{
 				cout <<"Invalid Field"<<endl;
 				return search_del(input, del);
-			}
+			}//search for given field
 			for(auto i = list->begin();i!=list->end();++i){
 				if(title){
 					if(!strcmp(input,(*i)->get_title())){
@@ -76,15 +75,15 @@ class Master{
 		}
 };
 int main(){
-	static char* input = media::response;
-	static Master * master = new Master();
+	static char* input = media::response;//use our response
+	static Master * master = new Master();//use class
 	cout << "ADD, SEARCH, DELETE, or QUIT"<<endl;
 	cin.getline(input,10);
 	if(strcmp(input, "QUIT")==0){
 		return 0;	
 	}
 	if(strcmp(input, "ADD")==0){
-		master->add(input);
+		master->add(input);//recurse for command
 	}
 	if(strcmp(input, "SEARCH") == 0){
 		master->search_del(input, false);

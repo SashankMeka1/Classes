@@ -4,7 +4,7 @@
 using namespace std;
 class music: public media{
 	public:
-		music();
+		music();//constructor will read in user input and initialize fields
 		char * get_creator(),* get_pub(), *get_dur();
 };
 

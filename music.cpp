@@ -14,7 +14,7 @@ char * music::get_pub(){
 	return this->field_three;
 }
 music::music(){
-	if(type == 0){
+	if(type == 0){//constructor only calls if type matches
 		cout << "Enter the fields in the following format: title,artist,year,duration,publisher"<<endl;
 		cin.getline(response, 150);
 		strcpy(title,strtok(response,","));

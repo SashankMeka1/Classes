@@ -4,7 +4,7 @@
 using namespace std;
 char* media::get_year(){
 	return year;
-}
+}//universal get title get year and print
 char* media::get_title(){
 	return title;
 }
